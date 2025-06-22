@@ -40,7 +40,7 @@ def path_post(postcode):
         try:
             os.chdir(postpath)
             files_list = os.listdir()
-            if ".mp4" in files_list[2] and os.statvfs(files_list[2]):
+            if ".mp4" in files_list[2] :
                 path = Path(os.getcwd() + "\\" + files_list[2])
             elif ".jpg" in files_list[0]:
                 path = Path(os.getcwd() + "\\" + files_list[0])

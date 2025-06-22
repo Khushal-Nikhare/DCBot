@@ -24,12 +24,14 @@ async def on_message(message):
         return
     
     if "https://www.instagram.com/" in message.content:
-        await message.channel.send(f"instagram {message.content}")
+        # await message.channel.send(f"instagram {message.content}")
         postcode = indo.url_to_postcode(message.content)
         if postcode:
             try:
                 path = indo.download_post(postcode)
+                print(f"downloaded : {path}-----------")
                 await message.channel.send(f"{message.author.mention}", file = discord.File(path,f"{postcode}.mp4"))
+                print(f"uploaded----------")
                 indo.delete_post(postcode)
             except Exception as e:
                 print(f"error : {e}")
